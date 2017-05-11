@@ -90,6 +90,33 @@ You can use these methods as many times in chain you want.
 
 ### Updating object
 
+You have to simply update a value - it will be automatically transformed. Everything is using getters & setters:
+
+```js
+const { createModel, types: t } = require('easen-models')
+
+const Post = createModel({
+  id: t.int,
+  title: t.string,
+  published: t.bool,
+  createdAt: t.date,
+  updatedAt: t.date
+})
+
+const post = new Post({
+  id: '10',
+  title: 'Post title',
+  published: 1,
+  createdAt: '2017-01-01T15:00:00',
+  updatedAt: Date.now()
+})
+
+console.log(post.createdAt) // instance of Date, 2017-01-01T15:00:00.000Z
+
+post.createdAt = '2015-01-01'
+console.log(post.createdAt) // instance of Date, 2015-01-01T00:00:00.000Z
+```
+
 ### Getting raw object
 
 You've got two options to get copy of raw object - using symbol or using built-in function:
