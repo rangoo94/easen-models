@@ -1,0 +1,36 @@
+{
+  "name": "easen-models",
+  "version": "0.1.0",
+  "description": "ES6 models & validation",
+  "author": "Dawid Rusnak <dawid@drcode.pl>",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "eslint src && mocha ./tests",
+    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- ./tests && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+  },
+  "keywords": [
+    "model",
+    "models",
+    "validation",
+    "ddd",
+    "domain",
+    "easen"
+  ],
+  "homepage": "https://github.com/rangoo94/easen-models",
+  "bugs": "https://github.com/rangoo94/easen-models/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rangoo94/easen-models.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "coveralls": "^2.11.12",
+    "expect.js": "^0.3.1",
+    "istanbul": "^0.4.4",
+    "mocha": "^3.0.2",
+    "standard": "^10.0.2",
+    "eslint": "^3.13.1",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-plugin-standard": "^2.0.1"
+  }
+}
