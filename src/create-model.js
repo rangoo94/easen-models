@@ -92,6 +92,9 @@ function createModel (definition) {
     }
   }
 
+  // Prepare factory to use it for initialization
+  Model.create = initialData => new Model(initialData)
+
   return Model
 }
 
