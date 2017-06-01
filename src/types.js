@@ -50,10 +50,12 @@ exports.assert = assert
 // Set up some generic rules
 
 const empty = assert(v => v == null, 'Value should be empty').pass(v => null)
+const required = assert(v => v != null, 'Value should not be empty')
 const oneOf = arr => assert(isOneOf, 'Should be one of values from list')
 const notOneOf = arr => assert(not(isOneOf), 'Shouldn\'t be one of values from list')
 
 exports.empty = empty
+exports.required = required
 exports.oneOf = oneOf
 exports.notOneOf = notOneOf
 
