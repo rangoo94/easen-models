@@ -1,6 +1,6 @@
 'use strict'
 
-const ValidationError = require('./validation-error')
+const ModelValidationError = require('./model-validation-error')
 
 // Set up helper functions to make code semantic
 
@@ -35,7 +35,7 @@ exports.pass = pass
  * @returns {function}
  * @throws Error
  */
-function assert (func, message, ErrorClass = ValidationError) {
+function assert (func, message, ErrorClass = ModelValidationError) {
   return pass(value => {
     if (!func(value)) {
       throw new ErrorClass(message)
@@ -64,14 +64,28 @@ const isValidDate = date => new Date(date).toString() !== 'Invalid Date'
 
 // Set up some basic types
 
+const any = pass(x => x)
 const number = pass(Number).pass(assert(isValidNumber, 'Incorrect number'))
 const integer = number.assert(v => parseInt(v, 10) === v, 'Incorrect integer')
 const date = pass(v => new Date(v)).assert(isValidDate)
 const string = pass(String)
 const bool = pass(Boolean)
 
+exports.any = any
 exports.number = number
 exports.integer = exports.int = integer
 exports.date = date
 exports.string = string
 exports.boolean = exports.bool = bool
+
+// Set some decorators which can't go deeper
+
+const nullable = f => (...args) => {
+  if (args[0] == null) {
+    return null
+  }
+
+  return f(...args)
+}
+
+exports.nullable = nullable

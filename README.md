@@ -2,7 +2,7 @@
 
 [![Travis](https://travis-ci.org/rangoo94/easen-models.svg)](https://travis-ci.org/rangoo94/easen-models)
 [![Code Climate](https://codeclimate.com/github/rangoo94/easen-models/badges/gpa.svg)](https://codeclimate.com/github/rangoo94/easen-models)
-[![Coverage Status](https://coveralls.io/repos/github/rangoo94/easen-models/badge.svg?branch=master)](https://coveralls.io/github/rangoo94/easen-models?branch=master)
+[![Test Coverage](https://codeclimate.com/github/rangoo94/easen-models/badges/coverage.svg)](https://codeclimate.com/github/rangoo94/easen-models/coverage)
 
 Project is not ready yet, see **To do** list on the bottom.
 
@@ -41,10 +41,10 @@ const post = new Post({
 ### Handle validation errors
 
 In case of current types, values will be transformed to correct type (e.g. `id` to `int`).
-When something will be wrong, `ValidationError` will be thrown, so you can handle errors:
+When something will be wrong, `ModelValidationError` will be thrown, so you can handle errors:
 
 ```js
-const { ValidationError } = require('easen-models')
+const { ModelValidationError } = require('easen-models')
 
 try {
   const post = new Post({
@@ -55,7 +55,7 @@ try {
     updatedAt: Date.now()
   })
 } catch (e) {
-  if (e instanceof ValidationError) {
+  if (e.name === 'ModelValidationError') {
     // Some values are wrong, you can look at additional errors at e.list
   } else {
     // Rethrow errors not connected to validation
@@ -82,7 +82,7 @@ const Post = createModel({
 ```
 
 Validators/types are just simple functions, which can throw error. It means, that you can use any other libraries to use there.
-When Model will detect error thrown, it will throw `ValidationError`.
+When Model will detect error thrown, it will throw `ModelValidationError`.
 
 Alternatively, you can use simple syntax with `pass` & `assert` helpers. Every validation included in `easen-models` allow chaining by default.
 `pass` is just passing a value to next function, `assert` will make assertion (check if passed function results with truthy value) and throw error if not.

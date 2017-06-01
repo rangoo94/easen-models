@@ -1,11 +1,11 @@
 'use strict'
 
 const createModel = require('./create-model')
-const ValidationError = require('./validation-error')
+const ModelValidationError = require('./model-validation-error')
 const types = require('./types')
 const symbols = require('./symbols')
 
-exports.ValidationError = ValidationError
+exports.ModelValidationError = ModelValidationError
 exports.RawSymbol = symbols.Raw
 
 exports.createModel = createModel

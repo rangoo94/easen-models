@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "eslint src && mocha ./tests",
-    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- ./tests && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- ./tests && cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter"
   },
   "keywords": [
     "model",
@@ -24,13 +24,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "coveralls": "^2.11.12",
+    "codeclimate-test-reporter": "^0.4.1",
+    "eslint": "^3.13.1",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-plugin-standard": "^2.0.1",
     "expect.js": "^0.3.1",
     "istanbul": "^0.4.4",
     "mocha": "^3.0.2",
-    "standard": "^10.0.2",
-    "eslint": "^3.13.1",
-    "eslint-config-standard": "^5.3.5",
-    "eslint-plugin-standard": "^2.0.1"
+    "standard": "^10.0.2"
   }
 }

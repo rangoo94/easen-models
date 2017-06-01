@@ -1,6 +1,6 @@
 'use strict'
 
-const ValidationError = require('./validation-error')
+const ModelValidationError = require('./model-validation-error')
 const symbols = require('./symbols')
 
 /**
@@ -27,7 +27,10 @@ function buildSetup (definition, keys) {
       enumerable: true,
       configurable: true,
       get: () => data[key],
-      set: value => data[key] = definition[key](value)
+      set: value => {
+        data[key] = definition[key](value)
+        return data[key]
+      }
     })
   })
 
@@ -85,7 +88,7 @@ function createModel (definition) {
 
     // Throw validation errors
     if (errors.length) {
-      throw new ValidationError(buildMessage(errors), errors)
+      throw new ModelValidationError(buildMessage(errors), errors)
     }
   }
 

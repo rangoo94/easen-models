@@ -5,7 +5,7 @@
  *
  * @class
  */
-class ValidationError extends Error {
+class ModelValidationError extends Error {
   /**
    * @param {string} message
    * @param {{ key: string, error: Error }[]} [errors]
@@ -19,12 +19,8 @@ class ValidationError extends Error {
     this.list = errors
 
     // Set proper error stack trace
-    if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, this.constructor)
-    } else {
-      this.stack = (new Error(message)).stack
-    }
+    Error.captureStackTrace(this, this.constructor)
   }
 }
 
-module.exports = ValidationError
+module.exports = ModelValidationError
