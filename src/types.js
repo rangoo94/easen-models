@@ -100,5 +100,8 @@ const arrayOf = f => arr => {
   return arr.map(value => f(value))
 }
 
+const instanceOf = Cls => value => new Cls(value)
+
 exports.nullable = nullable
 exports.arrayOf = arrayOf
+exports.instanceOf = instanceOf

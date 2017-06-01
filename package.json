@@ -1,6 +1,6 @@
 {
   "name": "easen-models",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "ES6 models & validation",
   "author": "Dawid Rusnak <dawid@drcode.pl>",
   "main": "src/index.js",
