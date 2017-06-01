@@ -90,4 +90,13 @@ const nullable = f => (...args) => {
   return f(...args)
 }
 
+const arrayOf = f => arr => {
+  if (!Array.isArray(arr)) {
+    throw new ModelValidationError('It should be array')
+  }
+
+  return arr.map(value => f(value))
+}
+
 exports.nullable = nullable
+exports.arrayOf = arrayOf
