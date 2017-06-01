@@ -1,3 +1,5 @@
+/* global describe, it */
+
 const expect = require('expect.js')
 
 describe('Index', () => {

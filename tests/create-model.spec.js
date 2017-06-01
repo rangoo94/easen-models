@@ -1,3 +1,5 @@
+/* global describe, it */
+
 const expect = require('expect.js')
 const createModel = require('../src/create-model')
 const symbols = require('../src/symbols')

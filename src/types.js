@@ -70,6 +70,7 @@ const integer = number.assert(v => parseInt(v, 10) === v, 'Incorrect integer')
 const date = pass(v => new Date(v)).assert(isValidDate)
 const string = pass(String)
 const bool = pass(Boolean)
+const object = assert(x => (x && typeof x === 'object'), 'Incorrect object')
 
 exports.any = any
 exports.number = number
@@ -77,6 +78,7 @@ exports.integer = exports.int = integer
 exports.date = date
 exports.string = string
 exports.boolean = exports.bool = bool
+exports.object = object
 
 // Set some decorators which can't go deeper
 

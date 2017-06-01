@@ -1,4 +1,6 @@
-const expect = require('expect.js')
+/* global describe, it */
+
+// const expect = require('expect.js')
 
 describe('Types', () => {
   it('should combine functions', () => {
