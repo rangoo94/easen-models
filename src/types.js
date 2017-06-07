@@ -84,13 +84,15 @@ exports.object = object
 
 // Set some decorators which can't go deeper
 
-const nullable = f => (...args) => {
+const defaultValue = (f, def) => (...args) => {
   if (args[0] == null) {
-    return null
+    return def
   }
 
   return f(...args)
 }
+
+const nullable = f => defaultValue(f, null)
 
 const arrayOf = f => arr => {
   if (!Array.isArray(arr)) {
@@ -102,6 +104,7 @@ const arrayOf = f => arr => {
 
 const instanceOf = Cls => value => new Cls(value)
 
+exports.default = defaultValue
 exports.nullable = nullable
 exports.arrayOf = arrayOf
 exports.instanceOf = instanceOf
