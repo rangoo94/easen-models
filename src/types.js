@@ -18,9 +18,23 @@ exports.not = not
  * @returns {function}
  */
 function pass (f) {
-  const f2 = (...args) => f(...args)
-  f2.pass = next => pass(x => next(f(x)))
+  const f2 = (value, stop) => f(value, stop)
+
   f2.assert = (...args) => f2.pass(assert(...args))
+
+  f2.pass = next => pass(x => {
+    let isStopped = false
+
+    const stop = x => {
+      isStopped = true
+      return x
+    }
+
+    const result = f(x, stop)
+
+    return isStopped ? result : next(result)
+  })
+
   return f2
 }
 
@@ -49,11 +63,13 @@ exports.assert = assert
 
 // Set up some generic rules
 
+const optional = pass((value, stop) => value === undefined ? stop(undefined) : value)
 const empty = assert(v => v == null, 'Value should be empty').pass(v => null)
 const required = assert(v => v != null, 'Value should not be empty')
 const oneOf = arr => assert(isOneOf, 'Should be one of values from list')
 const notOneOf = arr => assert(not(isOneOf), 'Shouldn\'t be one of values from list')
 
+exports.optional = optional
 exports.empty = empty
 exports.required = required
 exports.oneOf = oneOf

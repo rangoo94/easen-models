@@ -94,6 +94,7 @@ function createModel (definition) {
 
   // Prepare factory to use it for initialization
   Model.create = initialData => new Model(initialData)
+  Model.Definition = definition
 
   return Model
 }
