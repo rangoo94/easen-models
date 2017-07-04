@@ -1,10 +1,12 @@
 {
   "name": "easen-models",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "ES6 models & validation",
   "author": "Dawid Rusnak <dawid@drcode.pl>",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "build": "rollup -c",
+    "prepublish": "npm run build",
     "test": "eslint src && mocha ./tests",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- ./tests && cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter"
   },
@@ -24,6 +26,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "buble": "^0.15.2",
     "codeclimate-test-reporter": "^0.4.1",
     "eslint": "^3.13.1",
     "eslint-config-standard": "^5.3.5",
@@ -31,6 +34,10 @@
     "expect.js": "^0.3.1",
     "istanbul": "^0.4.4",
     "mocha": "^3.0.2",
+    "rollup": "^0.43.0",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-uglify": "^2.0.1",
     "standard": "^10.0.2"
   }
 }

@@ -16,7 +16,10 @@ function buildPartialModel (InitialModel) {
   const partialDefinition = {}
 
   // Pass all definitions as optional
-  for (const key of Object.keys(definition)) {
+  const keys = Object.keys(definition)
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
     partialDefinition[key] = optional.pass(definition[key])
   }
 
@@ -28,7 +31,10 @@ function buildPartialModel (InitialModel) {
     const data = this[symbols.Raw]
 
     // Delete unneeded keys
-    for (const key of Object.keys(data)) {
+    const keys = Object.keys(data)
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i]
+
       if (data[key] === undefined) {
         delete data[key]
       }
