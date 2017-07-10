@@ -119,14 +119,11 @@ console.log(post.createdAt) // instance of Date, 2015-01-01T00:00:00.000Z
 
 ### Getting raw object
 
-You've got two options to get copy of raw object - using symbol or using built-in function:
+You can get copy of raw object using built-in function:
 
 ```js
 const { raw } = require('easen-models')
 const value = raw(post)
-
-const { RawSymbol } = require('easen-models')
-const value = post[RawSymbol]
 ```
 
 If you want to serialize object, you can simply use just `JSON.stringify`

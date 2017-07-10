@@ -1,3 +1,3 @@
 'use strict'
 
-exports.Raw = Symbol('raw')
+exports.Raw = typeof Symbol === 'undefined' ? '__RawSymbol__' : Symbol('raw')

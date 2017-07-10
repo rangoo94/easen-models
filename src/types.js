@@ -91,7 +91,7 @@ const bool = pass(Boolean)
 const object = assert(x => (x && typeof x === 'object'), 'Incorrect object')
 
 exports.any = any
-exports.number = number
+exports.number = exports.decimal = number
 exports.integer = exports.int = integer
 exports.date = date
 exports.string = string
