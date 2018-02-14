@@ -6,7 +6,11 @@ const pkg = require('./package.json')
 
 export default {
   entry: 'src/index.js',
-  plugins: [ buble(), uglify(), commonjs() ],
+  plugins: [ buble(), uglify({
+    mangle: {
+      reserved: [ 'ModelValidationError' ]
+    }
+  }), commonjs() ],
   targets: [
     {
       dest: pkg.main,
