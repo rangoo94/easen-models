@@ -3,8 +3,7 @@
 [![Travis](https://travis-ci.org/rangoo94/easen-models.svg)](https://travis-ci.org/rangoo94/easen-models)
 [![Code Climate](https://codeclimate.com/github/rangoo94/easen-models/badges/gpa.svg)](https://codeclimate.com/github/rangoo94/easen-models)
 [![Test Coverage](https://codeclimate.com/github/rangoo94/easen-models/badges/coverage.svg)](https://codeclimate.com/github/rangoo94/easen-models/coverage)
-
-Project is not ready yet, see **To do** list on the bottom.
+[![NPM Downloads](https://img.shields.io/npm/dm/easen-models.svg)](https://www.npmjs.com/package/easen-models)
 
 ## How to use
 
