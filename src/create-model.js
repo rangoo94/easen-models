@@ -72,6 +72,12 @@ function createModel (definition) {
   const setup = buildSetup(definition, keys)
 
   function Model (initialData) {
+    // Make sure that we have at least empty object.
+    // TODO: shouldn't it throw error when it's i.e. string?
+    if (initialData == null || typeof initialData !== 'object') {
+      initialData = {}
+    }
+
     // Prepare basic object for storing data
     const data = {}
 
