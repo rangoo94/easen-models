@@ -10,7 +10,17 @@ const symbols = require('./symbols')
  * @returns string
  */
 function buildMessage (errors) {
-  return `Model thrown validation error: ${errors.map(error => error.key).join(', ')}`
+  return `Model thrown validation error: ${buildDetails(errors)}`
+}
+
+/**
+ * Build details information from errors array
+ *
+ * @param {{ key: string, error: Error }[]} errors
+ * @returns string
+ */
+function buildDetails (errors) {
+  return `${errors.map(error => error.key).join(', ')}`
 }
 
 /**
@@ -88,7 +98,7 @@ function createModel (definition) {
 
     // Throw validation errors
     if (errors.length) {
-      throw new ModelValidationError(buildMessage(errors), errors)
+      throw new ModelValidationError(buildMessage(errors), buildMessage(errors), errors)
     }
   }
 

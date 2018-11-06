@@ -52,7 +52,7 @@ exports.pass = pass
 function assert (func, message, ErrorClass = ModelValidationError) {
   return pass(value => {
     if (!func(value)) {
-      throw new ErrorClass(message)
+      throw new ErrorClass(message, message)
     }
 
     return value
@@ -112,7 +112,7 @@ const nullable = f => defaultValue(f, null)
 
 const arrayOf = f => arr => {
   if (!Array.isArray(arr)) {
-    throw new ModelValidationError('It should be array')
+    throw new ModelValidationError('It should be array', 'It should be array')
   }
 
   return arr.map(value => f(value))

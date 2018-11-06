@@ -56,6 +56,7 @@ try {
 } catch (e) {
   if (e.name === 'ModelValidationError') {
     // Some values are wrong, you can look at additional errors at e.list
+    // Or you can dump whole error with e.toJSON() method
   } else {
     // Rethrow errors not connected to validation
     throw e
