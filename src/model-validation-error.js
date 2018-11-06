@@ -12,7 +12,7 @@ class ModelValidationError extends Error {
    * @param {{ key: string, error: Error }[]} [errors]
    * @constructor
    */
-  constructor (message, details, errors = []) {
+  constructor (message, details = message, errors = []) {
     super(message)
 
     // Set up some properties

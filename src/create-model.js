@@ -2,6 +2,7 @@
 
 const ModelValidationError = require('./model-validation-error')
 const symbols = require('./symbols')
+const types = require('./types')
 
 /**
  * Build message from errors array
@@ -72,11 +73,8 @@ function createModel (definition) {
   const setup = buildSetup(definition, keys)
 
   function Model (initialData) {
-    // Make sure that we have at least empty object.
-    // TODO: shouldn't it throw error when it's i.e. string?
-    if (initialData == null || typeof initialData !== 'object') {
-      initialData = {}
-    }
+    // Throw validation error when initial data are not an object
+    types.object(initialData)
 
     // Prepare basic object for storing data
     const data = {}
@@ -104,7 +102,7 @@ function createModel (definition) {
 
     // Throw validation errors
     if (errors.length) {
-      throw new ModelValidationError(buildMessage(errors), buildMessage(errors), errors)
+      throw new ModelValidationError(buildMessage(errors), buildDetails(errors), errors)
     }
   }
 

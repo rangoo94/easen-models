@@ -112,7 +112,7 @@ const nullable = f => defaultValue(f, null)
 
 const arrayOf = f => arr => {
   if (!Array.isArray(arr)) {
-    throw new ModelValidationError('It should be array', 'It should be array')
+    throw new ModelValidationError('It should be an array')
   }
 
   return arr.map(value => f(value))
